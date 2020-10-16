@@ -1,7 +1,8 @@
 package com.example.demo.model;
 
-import javax.persistence.*;
-import java.util.HashMap;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -12,9 +13,9 @@ public class ReputationModel {
     @GeneratedValue
     private long id;
     private String gameId;
-    private int people = 0;
-    private int state = 0;
-    private int underworld = 0;
+    private long people = 0;
+    private long state = 0;
+    private long underworld = 0;
 
     public long getId() {
         return id;
@@ -32,24 +33,28 @@ public class ReputationModel {
         this.gameId = gameId;
     }
 
-    public int getPeople() {
+    public long getPeople() {
         return people;
     }
 
-    public void setPeople(int people) {
+    public void setPeople(long people) {
         this.people = people;
     }
 
-    public int getState() {
+    public long getState() {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(long state) {
         this.state = state;
     }
 
-    public int getUnderworld() {
+    public long getUnderworld() {
         return underworld;
+    }
+
+    public void setUnderworld(long underworld) {
+        this.underworld = underworld;
     }
 
     public void setUnderworld(int underworld) {

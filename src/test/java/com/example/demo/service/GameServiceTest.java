@@ -33,6 +33,10 @@ public class GameServiceTest {
     @Spy
     public GameService gameService;
 
+    @InjectMocks
+    @Spy
+    public ReputationService reputationService;
+
     @Captor
     ArgumentCaptor<GameModel> gameCaptor;
 
@@ -82,8 +86,8 @@ public class GameServiceTest {
 
         gameService.generateNewGameAndReputation();
 
-        verify(gameService).saveReputation(reputationCaptor.capture());
-        verify(gameService, times(1)).saveReputation(any(ReputationModel.class));
+        verify(reputationService).saveReputation(reputationCaptor.capture());
+        verify(reputationService, times(1)).saveReputation(any(ReputationModel.class));
         ReputationModel capturedRep = reputationCaptor.getValue();
 
         assertEquals("Reputation gameId false", capturedRep.getGameId(), "1");

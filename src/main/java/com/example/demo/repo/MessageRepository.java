@@ -13,4 +13,6 @@ public interface MessageRepository extends CrudRepository<MessageModel, Long> {
     List<MessageModel> findAllByGameId(String gameId);
 
     MessageModel findByGameIdAndAdId(String gameId, String adId);
+
+    MessageModel deleteByAdId(String adId);
 }

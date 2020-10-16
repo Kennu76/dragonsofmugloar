@@ -3,6 +3,7 @@ package com.example.demo.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.UUID;
@@ -79,7 +80,7 @@ public class GameModel {
     }
 
     public Map<String, Object> getMapForAction(long highScore) {
-        Map<String, Object> gameMap = new TreeMap<>();
+        Map<String, Object> gameMap = new LinkedHashMap<>();
         gameMap.put("lives", getLives());
         gameMap.put("gold", getGold());
         gameMap.put("score", getScore());

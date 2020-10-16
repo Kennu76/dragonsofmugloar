@@ -20,8 +20,6 @@ import java.util.Optional;
 @Service
 public class GameService {
 
-    private GenerateMessages generateMessages = new GenerateMessages();
-
     @Autowired
     private GameRepository gameRepository;
 
@@ -29,14 +27,11 @@ public class GameService {
     private HighScoreRepository highScoreRepository;
 
     @Autowired
-    private MessageRepository messageRepository;
-
-    @Autowired
-    private ReputationRepository reputationRepository;
+    private ReputationService reputationService;
 
     public GameModel generateNewGameAndReputation() {
         GameModel gameModel = generateNewGame();
-        generateReputation(gameModel.getGameId());
+        reputationService.generateReputation(gameModel.getGameId());
         return gameModel;
     }
 
@@ -45,16 +40,6 @@ public class GameService {
         gameModel.setLives(3);
         gameModel.setHighScore(getHighScore());
         return saveGame(gameModel);
-    }
-
-    private ReputationModel generateReputation(String gameId) {
-        ReputationModel reputationModel = new ReputationModel();
-        reputationModel.setGameId(gameId);
-        return saveReputation(reputationModel);
-    }
-
-    public ReputationModel saveReputation(ReputationModel reputationModel) {
-        return reputationRepository.save(reputationModel);
     }
 
     public GameModel saveGame(GameModel gameModel) {
@@ -66,31 +51,8 @@ public class GameService {
         return highScoreModel.map(HighScoreModel::getHighScore).orElse(0);
     }
 
-    public List<MessageModel> getMessagesByGameId(String gameId) {
-        List<MessageModel> messageList = new ArrayList<>();
-        messageRepository.findAllByGameId(gameId).forEach(messageList::add);
-        return messageList;
-    }
-
-    public void populateMessages(String gameId) {
-        List<MessageModel> messages = generateMessages.getMessages(gameId);
-        messages.forEach(this::saveMessage);
-    }
-
-    public MessageModel saveMessage(MessageModel messageModel) {
-        return messageRepository.save(messageModel);
-    }
-
-    public ReputationModel getReputationByGameId(String gameId) {
-        return reputationRepository.findByGameId(gameId);
-    }
-
     public long getTurn(String gameId) {
         return gameRepository.findByGameId(gameId).getTurn();
-    }
-
-    public MessageModel getMessageByGameIdAndAdId(String gameId, String adId) {
-        return messageRepository.findByGameIdAndAdId(gameId, adId);
     }
 
     public GameModel getGameByGameId(String gameId) {
