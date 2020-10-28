@@ -21,7 +21,7 @@ public class GameService {
     private GameRepository gameRepository;
 
     @Autowired
-    private HighScoreRepository highScoreRepository;
+    private HighScoreService highScoreService;
 
     @Autowired
     private ReputationService reputationService;
@@ -35,7 +35,7 @@ public class GameService {
     public GameModel generateNewGame() {
         GameModel gameModel = new GameModel();
         gameModel.setLives(3);
-        gameModel.setHighScore(getHighScore());
+        gameModel.setHighScore(highScoreService.getHighScore());
         return saveGame(gameModel);
     }
 
@@ -43,9 +43,8 @@ public class GameService {
         return gameRepository.save(gameModel);
     }
 
-    public int getHighScore() {
-        Optional<HighScoreModel> highScoreModel = highScoreRepository.findById(1L);
-        return highScoreModel.map(HighScoreModel::getHighScore).orElse(0);
+    public void deleteGame(GameModel gameModel) {
+        gameRepository.delete(gameModel);
     }
 
     public long getTurn(String gameId) {

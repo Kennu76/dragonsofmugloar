@@ -45,7 +45,7 @@ public class ItemService {
             changeGameAfterSuccessfulItemBuying(gameModel, itemModel);
             deleteItemOnceBought(itemModel);
         } else {
-            changeGameAfterFailingItemBuying(gameModel, itemModel);
+            changeGameAfterFailingItemBuying(gameModel);
         }
         gameService.saveGame(gameModel);
         return createResponse(gameHasEnoughGold, gameModel);
@@ -59,8 +59,7 @@ public class ItemService {
         gameModel.setTurn(gameModel.getTurn() + 1);
     }
 
-
-    private void changeGameAfterFailingItemBuying(GameModel gameModel, ItemModel itemModel) {
+    private void changeGameAfterFailingItemBuying(GameModel gameModel) {
         gameModel.setTurn(gameModel.getTurn() + 1);
     }
 

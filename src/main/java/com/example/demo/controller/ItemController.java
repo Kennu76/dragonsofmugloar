@@ -21,7 +21,6 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
-
     @GetMapping("/shop")
     public List<Map<String, Object>> getShopItems(@RequestParam String gameId) {
         List<Map<String, Object>> response = new ArrayList<>();

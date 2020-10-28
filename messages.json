@@ -2,7 +2,15 @@
   {
     "adId": "Lk0lYfJU",
     "message": "Help Takondwa Thurstan to clean their turnips",
-    "reward": 10,
+    "reward": 19,
+    "expiresIn": 6,
+    "encrypted": null,
+    "probability": "Piece of cake"
+  },
+  {
+    "adId": "So4fYtIu",
+    "message": "Fish some fish for ol' man Tim",
+    "reward": 32,
     "expiresIn": 6,
     "encrypted": null,
     "probability": "Piece of cake"
@@ -26,23 +34,23 @@
   {
     "adId": "B1zYlmTo",
     "message": "Escort Ebu Ólafsson to grassland in Bloodkeep where they can meet with their long lost water",
-    "reward": 61,
-    "expiresIn": 6,
+    "reward": 361,
+    "expiresIn": 10,
     "encrypted": null,
     "probability": "Risky"
   },
   {
     "adId": "AcSByTrP",
     "message": "Help Aston Wallace to reach an agreement with Ibrahim Alexander on the matters of disputed sheep",
-    "reward": 3,
-    "expiresIn": 6,
+    "reward": 223,
+    "expiresIn": 8,
     "encrypted": null,
     "probability": "Hmmm...."
   },
   {
     "adId": "OfqWNI3q",
     "message": "Help Iulius Martinson to fix their pot",
-    "reward": 4,
+    "reward": 41,
     "expiresIn": 6,
     "encrypted": null,
     "probability": "Piece of cake"
@@ -50,23 +58,31 @@
   {
     "adId": "X4vlQmVx",
     "message": "Create an advertisement campaign for Vidar Trollope to promote their turnips based business",
-    "reward": 26,
-    "expiresIn": 6,
+    "reward": 86,
+    "expiresIn": 7,
+    "encrypted": null,
+    "probability": "Walk in the park"
+  },
+  {
+    "adId": "G2hfYnWy",
+    "message": "Destroy Jonah's sons sandcastle because it's too good",
+    "reward": 91,
+    "expiresIn": 7,
     "encrypted": null,
     "probability": "Walk in the park"
   },
   {
     "adId": "6DT7sygP",
     "message": "Help Winter Lawrence to fix their weed",
-    "reward": 5,
-    "expiresIn": 6,
+    "reward": 215,
+    "expiresIn": 8,
     "encrypted": null,
     "probability": "Hmmm...."
   },
   {
     "adId": "zUZRslCd",
     "message": "Help Foteini Dickinson to clean their cat",
-    "reward": 2,
+    "reward": 21,
     "expiresIn": 6,
     "encrypted": null,
     "probability": "Piece of cake"
@@ -74,7 +90,7 @@
   {
     "adId": "05Ss6Gkr",
     "message": "Help Hlengiwe Kipling to reach an agreement with Ngọc Kinsley on the matters of disputed cat",
-    "reward": 6,
+    "reward": 16,
     "expiresIn": 6,
     "encrypted": null,
     "probability": "Piece of cake"

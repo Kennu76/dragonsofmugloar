@@ -79,13 +79,24 @@ public class GameModel {
         this.turn = turn;
     }
 
+    public Map<String, Object> getMap() {
+        Map<String, Object> gameMap = new LinkedHashMap<>();
+        gameMap.put("gameId", gameId);
+        gameMap.put("lives", lives);
+        gameMap.put("gold", gold);
+        gameMap.put("score", score);
+        gameMap.put("highScore", highScore);
+        gameMap.put("turn", turn);
+        return gameMap;
+    }
+
     public Map<String, Object> getMapForAction(long highScore) {
         Map<String, Object> gameMap = new LinkedHashMap<>();
-        gameMap.put("lives", getLives());
-        gameMap.put("gold", getGold());
-        gameMap.put("score", getScore());
+        gameMap.put("lives", lives);
+        gameMap.put("gold", gold);
+        gameMap.put("score", score);
         gameMap.put("highScore", highScore);
-        gameMap.put("turn", getTurn());
+        gameMap.put("turn", turn);
         return gameMap;
     }
 

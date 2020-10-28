@@ -35,6 +35,10 @@ public class GameServiceTest {
 
     @InjectMocks
     @Spy
+    public HighScoreService highScoreService;
+
+    @InjectMocks
+    @Spy
     public ReputationService reputationService;
 
     @Captor
@@ -63,7 +67,7 @@ public class GameServiceTest {
 
         // Adding elements to the linked list
         when(highScoreRepository.findById(1L)).thenReturn(java.util.Optional.of(highScoreModel));
-        assertEquals("Highscore incorrect", gameService.getHighScore(), 5);
+        assertEquals("Highscore incorrect", highScoreService.getHighScore(), 5);
     }
 
     @Test
@@ -73,7 +77,7 @@ public class GameServiceTest {
 
         // Adding elements to the linked list
         when(highScoreRepository.findById(1L)).thenReturn(Optional.empty());
-        assertEquals("Highscore incorrect", gameService.getHighScore(), 0);
+        assertEquals("Highscore incorrect", highScoreService.getHighScore(), 0);
     }
 
     @Test

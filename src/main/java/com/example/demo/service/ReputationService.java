@@ -5,8 +5,6 @@ import com.example.demo.repo.ReputationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Entity;
-
 @Service
 public class ReputationService {
 
@@ -22,7 +20,6 @@ public class ReputationService {
     public ReputationModel saveReputation(ReputationModel reputationModel) {
         return reputationRepository.save(reputationModel);
     }
-
 
     public ReputationModel getReputationByGameId(String gameId) {
         return reputationRepository.findByGameId(gameId);

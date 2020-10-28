@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -81,7 +82,7 @@ public class MessageModel {
     }
 
     public Map<String, Object> getMessageMap(long turn) {
-        Map<String, Object> messageMap = new TreeMap<>();
+        Map<String, Object> messageMap = new LinkedHashMap<>();
         messageMap.put("adId", getAdId());
         messageMap.put("message", getMessage());
         messageMap.put("reward", getReward());

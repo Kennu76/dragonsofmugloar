@@ -8,10 +8,17 @@ import javax.persistence.Id;
 public class HighScoreModel {
 
     @Id
-    @GeneratedValue
     private long id;
 
     private int highScore;
+
+    public HighScoreModel() {
+    }
+
+    public HighScoreModel(long id, int highScore) {
+        this.id = id;
+        this.highScore = highScore;
+    }
 
     public long getId() {
         return id;
