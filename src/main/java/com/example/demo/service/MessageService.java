@@ -15,8 +15,6 @@ import java.util.List;
 @Service
 public class MessageService {
 
-    private GenerateMessages generateMessages = new GenerateMessages();
-
     @Autowired
     private MessageRepository messageRepository;
 
@@ -25,18 +23,16 @@ public class MessageService {
 
 
     public List<MessageModel> getMessagesByGameId(String gameId) {
-        List<MessageModel> messageList = new ArrayList<>();
-        messageRepository.findAllByGameId(gameId).forEach(messageList::add);
-        return messageList;
+        return messageRepository.findAllByGameId(gameId);
     }
 
     public void populateMessages(String gameId) {
-        List<MessageModel> messages = generateMessages.getMessages(gameId);
+        List<MessageModel> messages = GenerateMessages.getMessages(gameId);
         messages.forEach(this::saveMessage);
     }
 
-    public MessageModel saveMessage(MessageModel messageModel) {
-        return messageRepository.save(messageModel);
+    public void saveMessage(MessageModel messageModel) {
+        messageRepository.save(messageModel);
     }
 
 

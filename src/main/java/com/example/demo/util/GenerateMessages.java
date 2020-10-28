@@ -1,46 +1,45 @@
 package com.example.demo.util;
 
+import com.example.demo.model.ItemModel;
 import com.example.demo.model.MessageModel;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GenerateMessages {
 
-    private List<MessageModel> messages = new ArrayList<>();
-    private String gameId;
-
-    public List<MessageModel> getMessages(String gameId) {
-        this.gameId = gameId;
-        readJson();
-        return messages;
+    public static List<MessageModel> getMessages(String gameId) {
+        List<MessageModel> messageModels = new ArrayList<>();
+        JSONArray messagesAsJson = readAndParseJson("messages.json");
+        messagesAsJson.forEach(message -> messageModels.add(parseMessageObject((JSONObject) message, gameId)));
+        return messageModels;
     }
-    public void readJson() {
-        JSONParser jsonParser = new JSONParser();
-        try (FileReader reader = new FileReader(new File("messages.json"))) {
-            Object obj = jsonParser.parse(reader);
-            JSONArray messageList = (JSONArray) obj;
-            messageList.forEach(message -> messages.add(parseMessageObject((JSONObject) message)));
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
+    public static List<ItemModel> getItems(String gameId) {
+        List<ItemModel> itemModels = new ArrayList<>();
+        JSONArray itemsAsJson = readAndParseJson("items.json");
+        itemsAsJson.forEach(item -> itemModels.add(parseItemObject((JSONObject) item, gameId)));
+        return itemModels;
+    }
+
+
+    public static JSONArray readAndParseJson(String path) {
+        JSONParser jsonParser = new JSONParser();
+        try (FileReader reader = new FileReader(new File(path))) {
+            Object obj = jsonParser.parse(reader);
+            return (JSONArray) obj;
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
         }
     }
 
-    private MessageModel parseMessageObject(JSONObject message) {
+    private static MessageModel parseMessageObject(JSONObject message, String gameId) {
         String adId = (String) message.get("adId");
         String messageString = (String) message.get("message");
         long reward = (long) message.get("reward");
@@ -48,6 +47,15 @@ public class GenerateMessages {
         String encrypted = (String) message.get("encrypted");
         String probability = (String) message.get("probability");
         return new MessageModel(adId, gameId, messageString, reward, expiresIn, encrypted, probability);
+    }
+
+    private static ItemModel parseItemObject(JSONObject item, String gameId) {
+        String id = (String) item.get("id");
+        String name = (String) item.get("name");
+        long cost = (long) item.get("cost");
+        long additionalLives = (long) item.get("lives");
+        long additionalLevels = (long) item.get("level");
+        return new ItemModel(id, gameId, name, cost, additionalLives, additionalLevels);
     }
 
 }

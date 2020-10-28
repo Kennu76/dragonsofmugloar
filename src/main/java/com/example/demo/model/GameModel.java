@@ -88,4 +88,13 @@ public class GameModel {
         gameMap.put("turn", getTurn());
         return gameMap;
     }
+
+    public Map<String, Object> getMapForItemBuying() {
+        Map<String, Object> gameMap = new LinkedHashMap<>();
+        gameMap.put("gold", getGold());
+        gameMap.put("lives", getLives());
+        gameMap.put("level", getLevel());
+        gameMap.put("turn", getTurn());
+        return gameMap;
+    }
 }

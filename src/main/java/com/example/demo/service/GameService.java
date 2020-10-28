@@ -1,10 +1,7 @@
 package com.example.demo.service;
 
 
-import com.example.demo.model.GameModel;
-import com.example.demo.model.HighScoreModel;
-import com.example.demo.model.MessageModel;
-import com.example.demo.model.ReputationModel;
+import com.example.demo.model.*;
 import com.example.demo.repo.GameRepository;
 import com.example.demo.repo.HighScoreRepository;
 import com.example.demo.repo.MessageRepository;

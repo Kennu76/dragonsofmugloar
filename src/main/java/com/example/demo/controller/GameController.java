@@ -3,10 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.GameModel;
 
 import com.example.demo.model.MessageModel;
-import com.example.demo.service.ActionService;
-import com.example.demo.service.GameService;
-import com.example.demo.service.MessageService;
-import com.example.demo.service.ReputationService;
+import com.example.demo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +24,9 @@ public class GameController {
     private MessageService messageService;
 
     @Autowired
+    private ItemService itemService;
+
+    @Autowired
     private ActionService actionService;
 
     @Autowired
@@ -36,8 +36,14 @@ public class GameController {
     public GameModel startGame() {
         GameModel gameModel = gameService.generateNewGameAndReputation();
         messageService.populateMessages(gameModel.getGameId());
+        itemService.populateItems(gameModel.getGameId());
         gameModel.setHighScore(gameService.getHighScore());
         return gameModel;
+    }
+
+    @GetMapping("/game/status")
+    public GameModel gameStatus(@RequestParam String gameId) {
+        return gameService.getGameByGameId(gameId);
     }
 
     @PostMapping("/investigate/reputation")

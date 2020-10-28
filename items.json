@@ -1,0 +1,79 @@
+[
+  {
+    "id": "hpot",
+    "name": "Healing potion",
+    "cost": 50,
+    "lives": 1,
+    "level": 0
+  },
+  {
+    "id": "cs",
+    "name": "Claw Sharpening",
+    "cost": 100,
+    "lives": 0,
+    "level": 1
+  },
+  {
+    "id": "gas",
+    "name": "Gasoline",
+    "cost": 100,
+    "lives": 0,
+    "level": 1
+  },
+  {
+    "id": "wax",
+    "name": "Copper Plating",
+    "cost": 100,
+    "lives": 1,
+    "level": 0
+  },
+  {
+    "id": "tricks",
+    "name": "Book of Tricks",
+    "cost": 100,
+    "lives": 0,
+    "level": 2
+  },
+  {
+    "id": "wingpot",
+    "name": "Potion of Stronger Wings",
+    "cost": 100,
+    "lives": 2,
+    "level": 0
+  },
+  {
+    "id": "ch",
+    "name": "Claw Honing",
+    "cost": 300,
+    "lives": 0,
+    "level": 2
+  },
+  {
+    "id": "rf",
+    "name": "Rocket Fuel",
+    "cost": 300,
+    "lives": 0,
+    "level": 2
+  },
+  {
+    "id": "iron",
+    "name": "Iron Plating",
+    "cost": 300,
+    "lives": 2,
+    "level": 0
+  },
+  {
+    "id": "mtrix",
+    "name": "Book of Megatricks",
+    "cost": 300,
+    "lives": 0,
+    "level": 3
+  },
+  {
+    "id": "wingpotmax",
+    "name": "Potion of Awesome Wings",
+    "cost": 300,
+    "lives": 3,
+    "level": 0
+  }
+]
